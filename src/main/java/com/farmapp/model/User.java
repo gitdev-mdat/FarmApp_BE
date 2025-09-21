@@ -45,8 +45,8 @@ public class User {
     @Column(name = "role", nullable = false)
     private UserRole role;
 
-    @Column(name = "is_active")
-    private Boolean isActive = true;
+    @Column(name = "active")
+    private boolean active;
 
     @PrePersist
     public void prePersist() {

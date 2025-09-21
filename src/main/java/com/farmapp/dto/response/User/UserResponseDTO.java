@@ -17,7 +17,7 @@ public class UserResponseDTO {
     private String identityCard;
     private String identityCardUrl;
     private UserRole role;
-    private boolean isActive;
+    private boolean active;
 
 
 }

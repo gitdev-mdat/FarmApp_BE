@@ -13,11 +13,9 @@ public class UserMapper {
     public static User toEntity (UserCreateRequestDTO dto) {
         return User.builder()
                 .name(dto.getName())
-                .fakeName(dto.getFakeName())
                 .phone(dto.getPhone())
                 .address(dto.getAddress())
                 .identityCard(dto.getIdentityCard())
-                .isActive(true)
                 .identityCardUrl(dto.getIdentityCardUrl())
                 .build();
     }
@@ -40,7 +38,7 @@ public class UserMapper {
                 .identityCard(user.getIdentityCard())
                 .identityCardUrl(user.getIdentityCardUrl())
                 .role(user.getRole())
-                .isActive(user.getIsActive())
+                .active(user.isActive())
                 .build();
     }
     // Trả về danh sách User

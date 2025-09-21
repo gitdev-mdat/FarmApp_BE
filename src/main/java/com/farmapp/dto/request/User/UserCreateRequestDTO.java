@@ -12,7 +12,6 @@ public class UserCreateRequestDTO {
     private String name;
     private String phone;
     private String address;
-    private String fakeName;
     private String identityCard;
     private String identityCardUrl;
 }

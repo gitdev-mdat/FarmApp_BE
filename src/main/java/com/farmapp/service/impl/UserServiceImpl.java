@@ -23,7 +23,7 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public List<UserResponseDTO> getAllFarmers() {
-        return userRepository.findAllByRoleAndIsActiveTrue(UserRole.FARMER).stream()
+        return userRepository.findAllByRoleAndActiveTrue(UserRole.FARMER).stream()
                 .map(UserMapper::toResponse)
                 .toList();
     }
@@ -42,7 +42,7 @@ public class UserServiceImpl implements UserService {
         }
         User user = UserMapper.toEntity(dto);
         user.setRole(UserRole.FARMER);
-        user.setIsActive(true);
+        user.setActive(true);
         return UserMapper.toResponse(userRepository.save(user));
     }
 
@@ -57,7 +57,7 @@ public class UserServiceImpl implements UserService {
     public void deleteFarmer(Integer id) {
         User existing = userRepository.findById(id)
                 .orElseThrow(() -> new FarmAppException("Không tìm thấy người dùng", HttpStatus.NOT_FOUND));
-        existing.setIsActive(false); // Soft delete ✅
+        existing.setActive(false);
         userRepository.save(existing);
     }
 }
