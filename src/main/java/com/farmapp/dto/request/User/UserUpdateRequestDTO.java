@@ -1,0 +1,18 @@
+package com.farmapp.dto.request.User;
+
+
+import lombok.*;
+
+@Getter
+@Setter
+@AllArgsConstructor
+@NoArgsConstructor
+@Builder
+public class UserUpdateRequestDTO {
+    private String name;
+    private String phone;
+    private String address;
+    private String fakeName;
+    private String identityCard;
+    private String identityCardUrl;
+}
