@@ -1,5 +1,6 @@
 package com.farmapp.model;
 
+import com.farmapp.enums.UserGender;
 import com.farmapp.enums.UserRole;
 import jakarta.persistence.*;
 import lombok.*;
@@ -23,11 +24,12 @@ public class User {
     @Column (name = "avatar_url", length = 1000)
     private String avatarUrl;
 
-    @Column(name = "fake_name", length = 100)
-    private String fakeName;
-
     @Column(name = "phone", length = 20,unique = true)
     private String phone;
+
+    @Enumerated(EnumType.STRING)
+    @Column(name = "gender")
+    private UserGender gender;
 
     @Column(name = "password")
     private String password;
@@ -35,18 +37,21 @@ public class User {
     @Column(name = "address", length = 255)
     private String address;
 
-    @Column(name = "identity_card", length = 20)
-    private String identityCard;
+    @Column(name = "identity_card_number", length = 20)
+    private String identityCardNumber;
 
-    @Column(name = "identity_card_url", length = 1000)
-    private String identityCardUrl;
+    @Column(name = "identity_card_front_url", length = 1000)
+    private String identityCardFrontUrl;
+
+    @Column(name = "identity_card_back_url", length = 1000)
+    private String identityCardBackUrl;
 
     @Enumerated(EnumType.STRING)
     @Column(name = "role", nullable = false)
     private UserRole role;
 
-    @Column(name = "active")
-    private boolean active;
+    @Column(name = "active", nullable = false, columnDefinition = "TINYINT(1) DEFAULT 1")
+    private boolean active = true;
 
     @PrePersist
     public void prePersist() {

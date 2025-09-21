@@ -1,6 +1,7 @@
 
 package com.farmapp.dto.request.User;
 
+import com.farmapp.enums.UserGender;
 import lombok.*;
 
 @Getter
@@ -10,8 +11,12 @@ import lombok.*;
 @NoArgsConstructor
 public class UserCreateRequestDTO {
     private String name;
+    private String avatarUrl;
+    private UserGender gender;
     private String phone;
     private String address;
-    private String identityCard;
-    private String identityCardUrl;
+    private String identityCardNumber;
+    private String identityCardFrontUrl;
+    private String identityCardBackUrl;
+
 }

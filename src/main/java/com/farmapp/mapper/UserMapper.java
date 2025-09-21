@@ -13,30 +13,36 @@ public class UserMapper {
     public static User toEntity (UserCreateRequestDTO dto) {
         return User.builder()
                 .name(dto.getName())
+                .avatarUrl(dto.getAvatarUrl())
+                .gender(dto.getGender())
                 .phone(dto.getPhone())
                 .address(dto.getAddress())
-                .identityCard(dto.getIdentityCard())
-                .identityCardUrl(dto.getIdentityCardUrl())
+                .identityCardNumber(dto.getIdentityCardNumber())
+                .identityCardFrontUrl(dto.getIdentityCardFrontUrl())
+                .identityCardBackUrl(dto.getIdentityCardBackUrl())
                 .build();
     }
     // Cập nhật User
     public static void  updateEntity (User user, UserUpdateRequestDTO dto) {
         user.setName(dto.getName());
-        user.setFakeName(dto.getFakeName());
         user.setPhone(dto.getPhone());
         user.setAddress(dto.getAddress());
-        user.setIdentityCard(dto.getIdentityCard());
-        user.setIdentityCardUrl(dto.getIdentityCardUrl());
+        user.setGender(dto.getGender());
+        user.setIdentityCardNumber(dto.getIdentityCardNumber());
+        user.setIdentityCardFrontUrl(dto.getIdentityCardFrontUrl());
+        user.setIdentityCardBackUrl(dto.getIdentityCardBackUrl());
     }
     public static UserResponseDTO toResponse (User user) {
         return UserResponseDTO.builder()
                 .id(user.getId())
                 .name(user.getName())
+                .avatarUrl(user.getAvatarUrl())
+                .gender(user.getGender())
                 .phone(user.getPhone())
                 .address(user.getAddress())
-                .fakeName(user.getFakeName())
-                .identityCard(user.getIdentityCard())
-                .identityCardUrl(user.getIdentityCardUrl())
+                .identityCardNumber(user.getIdentityCardNumber())
+                .identityCardFrontUrl(user.getIdentityCardFrontUrl())
+                .identityCardBackUrl(user.getIdentityCardBackUrl())
                 .role(user.getRole())
                 .active(user.isActive())
                 .build();

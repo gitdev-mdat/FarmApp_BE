@@ -9,14 +9,13 @@ public class WebConfig implements WebMvcConfigurer {
 
     @Override
     public void addCorsMappings(CorsRegistry registry) {
-        registry.addMapping("/**") // tất cả API
+        registry.addMapping("/**")
                 .allowedOrigins(
                         "http://localhost:5173",
-                        "https://farm-app-fe.vercel.app/"
-                ) // FE localhost + FE vercel
-                .allowedMethods("GET", "POST", "PUT", "DELETE", "PATCH", "OPTIONS") // phải có OPTIONS
+                        "https://farm-app-fe.vercel.app"   // <-- KHÔNG có trailing slash
+                )
+                .allowedMethods("GET", "POST", "PUT", "DELETE", "PATCH", "OPTIONS")
                 .allowedHeaders("*")
-                .allowCredentials(false); // chưa dùng cookie/session thì false luôn cho gọn
+                .allowCredentials(false); // nếu không dùng cookie/session thì false ok
     }
 }
-
