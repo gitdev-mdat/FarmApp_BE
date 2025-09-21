@@ -37,7 +37,7 @@ public class UserServiceImpl implements UserService {
     @Override
     public UserResponseDTO createFarmer(UserCreateRequestDTO dto) {
         // Kiểm tra trùng số điện thoại
-        if (userRepository.findByPhone(dto.getPhone()).isPresent()) {
+        if (userRepository.findByPhoneAndActiveTrue(dto.getPhone()).isPresent()) {
             throw new FarmAppException("Số điện thoại đã được sử dụng", HttpStatus.BAD_REQUEST);
         }
         User user = UserMapper.toEntity(dto);
